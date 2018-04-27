@@ -16,3 +16,34 @@ const monologueLines = [
   'No.',
   'I am the one who knocks!'
 ];
+
+const battReducer = function (acc, x) {
+  return acc + x;
+}
+
+
+let totalBatteries = batteryBatches.reduce(battReducer, 0);
+
+
+const wordReducer = function (acc, currentX, currentI) {
+  let a = currentX.split(" ");
+  let wordCount = a.length;
+
+  if (!!acc[wordCount]) {
+    // if key present then ++
+    acc[wordCount]++;
+  } else {
+    // else add key with = 1
+    acc[wordCount] = 1;
+  }
+
+  return acc;
+}
+// monologueLines.map(lineMapper);
+
+
+
+
+// wants an object that has property:values of (index+1): word_count
+
+let wordCountMap = monologueLines.reduce(wordReducer, {});
